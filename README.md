@@ -21,7 +21,7 @@ Jika kamu adalah anggota tim yang memegang kode sumber pertama kali, ikuti langk
     ```
 3.  **Hubungkan ke Repositori ini**:
     ```bash
-    git remote add origin [https://github.com/NAMA_ORGANISASI/NAMA_REPO.git](https://github.com/NAMA_ORGANISASI/NAMA_REPO.git)
+    git remote add origin https://github.com/PA-B24-2026/PA_PEMVIS_B24_2026.git
     ```
 4.  **Ambil README (Sangat Penting)**:
     ```bash
@@ -49,7 +49,7 @@ Sebelum menjalankan aplikasi ini, pastikan kamu sudah menginstal:
 ### 1. Clone Repositori
 Jika kamu baru ingin mengambil kode dari GitHub ke laptop baru:
 ```bash
-git clone [https://github.com/NAMA_ORGANISASI/NAMA_REPO.git](https://github.com/NAMA_ORGANISASI/NAMA_REPO.git)
+git clone https://github.com/PA-B24-2026/PA_PEMVIS_B24_2026.git
 cd NAMA_REPO
 ```
 
