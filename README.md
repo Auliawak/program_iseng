@@ -1,6 +1,6 @@
 # Project Final Praktikum - Sistem Tier List Hero Meta Mobile Legend
 
-Selamat datang di repositori kelompok kami! Proyek ini dikembangkan untuk memenuhi tugas akhir mata kuliah **Pemrograman Visual (PEMVIS)**.
+Selamat datang di repositori kelompok kami! Proyek ini dikembangkan untuk memenuhi tugas akhir mata kuliah **Pemrograman Visual (PEMVIS)**. 
 
 ## 👥 Anggota Kelompok
 | Nama | NIM |
@@ -38,9 +38,9 @@ Jika kamu adalah anggota tim yang memegang kode sumber pertama kali, ikuti langk
 
 ## Prasyarat (Prerequisites)
 Sebelum menjalankan aplikasi ini, pastikan kamu sudah menginstal:
-*   **Java Development Kit (JDK)** versi 17 atau terbaru (untuk PBO).
+*   **Windows Net App** saat pertama kali install visual studio ini pasti ada.
 *   **Visual Studio** atau **VS Code** dengan ekstensi yang sesuai.
-*   **MySQL / MariaDB** (jika aplikasi menggunakan database).
+*   **MySQL**.
 
 ---
 
@@ -50,7 +50,7 @@ Sebelum menjalankan aplikasi ini, pastikan kamu sudah menginstal:
 Jika kamu baru ingin mengambil kode dari GitHub ke laptop baru:
 ```bash
 git clone https://github.com/PA-B24-2026/PA_PEMVIS_B24_2026.git
-cd NAMA_REPO
+cd PA_PEMVIS_B24_2026
 ```
 
 ### 2. Setelah clone, jalankan program seperti biasa menggunakan visual studio
