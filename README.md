@@ -38,7 +38,7 @@ Jika kamu adalah anggota tim yang memegang kode sumber pertama kali, ikuti langk
 
 ## Prasyarat (Prerequisites)
 Sebelum menjalankan aplikasi ini, pastikan kamu sudah menginstal:
-*   **Windows Net App** saat pertama kali install visual studio ini pasti ada.
+*   **Visual Basic .NET** saat pertama kali install visual studio pastikan install yang `.NET`.
 *   **Visual Studio** atau **VS Code** dengan ekstensi yang sesuai.
 *   **MySQL**.
 
