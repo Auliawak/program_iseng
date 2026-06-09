@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0714; color:#f8f8f2; min-height: 100vh; overflow-x: hidden;}
+
+.scene{width:100%;min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:30px 10px 50px;position:relative;overflow:hidden;background:#0a0714}
+.stars{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
+.star{position:absolute;width:4px;height:4px;border-radius:50%;animation:twinkle 3s infinite}
+@keyframes twinkle{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:1;transform:scale(1.8)}}
+
+/* Efek Menyala Pada Judul */
+.title{font-family:'Caveat',cursive;font-size:36px;color:#ff79c6;text-align:center;margin-bottom:8px;animation:fadeDown 1s ease;text-shadow: 0 0 12px #ff79c6, 0 0 25px #ff5555}
+.subtitle{font-family:'Caveat',cursive;font-size:20px;color:#8be9fd;text-align:center;margin-bottom:30px;animation:fadeDown 1.2s ease;text-shadow: 0 0 10px #8be9fd}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Area Bunga */
+.flowers-row{display:flex;justify-content:center;align-items:flex-end;gap:20px;margin-bottom:15px}
+.flower-wrap{display:flex;flex-direction:column;align-items:center;animation:flowerPop 0.8s ease both}
+@keyframes flowerPop{0%{opacity:0;transform:scale(0) rotate(-30deg)}80%{transform:scale(1.1) rotate(3deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
+
+.petals{position:relative;width:80px;height:80px;display:flex;align-items:center;justify-content:center}
+.petal{position:absolute;width:28px;height:38px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;color:#fff;animation:sway 3s ease-in-out infinite;box-shadow: 0 0 10px currentColor}
+@keyframes sway{0%,100%{transform-origin:center bottom;transform:rotate(var(--r)) scaleY(1)}50%{transform-origin:center bottom;transform:rotate(var(--r)) scaleY(1.06)}}
+.center{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;z-index:10;box-shadow:0 0 15px #fff}
+
+.stem{width:4px;background:linear-gradient(to bottom,#50fa7b,#8be9fd);border-radius:2px;margin:0 auto;box-shadow: 0 0 8px #50fa7b}
+.leaf{width:20px;height:12px;background:#50fa7b;border-radius:50%;position:absolute;top:30%;animation:leafSway 2.5s ease-in-out infinite;box-shadow: 0 0 6px #50fa7b}
+.stem-wrap{position:relative;display:flex;justify-content:center}
+.leaf-l{left:-16px;transform:rotate(-30deg);transform-origin:right center}
+.leaf-r{right:-16px;transform:rotate(30deg);transform-origin:left center}
+@keyframes leafSway{0%,100%{transform:rotate(var(--lr)) scaleX(1)}50%{transform:rotate(var(--lr)) scaleX(1.1)}}
+
+/* Struktur Molekul Menyala */
+.molecule-row{display:flex;justify-content:center;gap:35px;margin:25px 0}
+.molecule{display:flex;flex-direction:column;align-items:center;gap:6px;animation:floatUp 4s ease-in-out infinite}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.mol-label{font-size:14px;color:#bd93f9;font-weight:600;font-family:'Caveat',cursive;text-shadow: 0 0 6px #bd93f9}
+.atom-row{display:flex;align-items:center;gap:3px}
+.atom{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#0a0714;flex-shrink:0}
+.bond{width:12px;height:3px;border-radius:2px;background:#ff79c6;box-shadow: 0 0 6px #ff79c6}
+.double-bond{display:flex;flex-direction:column;gap:3px}
+.double-bond .bond{height:2px}
+
+/* Kotak Pesan Neon */
+.card{background:rgba(20, 15, 38, 0.75);border:1.5px solid #bd93f9;border-radius:16px;padding:18px 24px;max-width:460px;width:100%;margin:15px auto;text-align:center;box-shadow:0 0 18px rgba(189, 147, 249, 0.4);animation:fadeUp 1.5s ease both;backdrop-filter: blur(4px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card-text{font-family:'Caveat',cursive;font-size:20px;color:#f8f8f2;line-height:1.6;text-shadow: 0 0 4px rgba(255,255,255,0.3)}
+.card-formula{font-size:13px;color:#ffb86c;margin-top:10px;font-weight:600;letter-spacing:0.5px;text-shadow: 0 0 8px #ffb86c}
+
+/* Gelembung */
+.bubbles{position:absolute;bottom:0;left:0;width:100%;pointer-events:none}
+.bubble{position:absolute;bottom:-20px;border-radius:50%;border:2px solid rgba(139, 233, 253, 0.5);box-shadow: 0 0 8px rgba(139, 233, 253, 0.3);animation:riseUp 6s ease-in infinite}
+@keyframes riseUp{0%{transform:translateY(0) scale(1);opacity:0.7}100%{transform:translateY(-650px) scale(0.4);opacity:0}}
+
+/* Labu Tabung Reaksi Menyala */
+.flask-row{display:flex;justify-content:center;gap:26px;margin:20px 0}
+.flask{display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform 0.2s}
+.flask:hover{transform:scale(1.15) rotate(-3deg)}
+.flask svg{filter:drop-shadow(0 0 8px currentColor)}
+.flask-lbl{font-family:'Caveat',cursive;font-size:14px;color:#f8f8f2;margin-top:6px;text-shadow: 0 0 5px rgba(255,255,255,0.5)}
+
+.reaction-msg{font-family:'Caveat',cursive;font-size:18px;color:#ff79c6;text-align:center;margin:8px 0;min-height:24px;transition:all 0.3s;text-shadow: 0 0 8px #ff79c6}
+.sparkle{position:absolute;pointer-events:none;animation:sparkleOut 1s ease forwards;filter: drop-shadow(0 0 8px currentColor)}
+@keyframes sparkleOut{0%{opacity:1;transform:scale(0)}50%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(0) translateY(-40px)}}
+
+/* STYLING: Kotak Gombalan Semangat */
+.gombalan-container{background: rgba(255, 121, 198, 0.06); border: 2px dashed #ff79c6; border-radius: 16px; padding: 20px; max-width: 500px; width: 100%; margin: 25px auto; text-align: center; box-shadow: 0 0 15px rgba(255, 121, 198, 0.25); animation: fadeUp 1.7s ease both;}
+.gombalan-title{font-family: 'Caveat', cursive; font-size: 22px; color: #ff79c6; text-shadow: 0 0 8px #ff79c6; margin-bottom: 15px; font-weight: bold;}
+.chemical-word{display: flex; justify-content: center; gap: 14px; margin-bottom: 14px;}
+.chem-box{background: #8be9fd; color: #0a0714; width: 55px; height: 55px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: sans-serif; box-shadow: 0 0 15px #8be9fd; position: relative;}
+.chem-num{font-size: 9px; font-weight: bold; opacity: 0.8; position: absolute; top: 4px; left: 6px;}
+.chem-sym{font-size: 20px; font-weight: bold; line-height: 1; margin-top: 6px;}
+.chem-name{font-size: 8px; font-weight: bold; opacity: 0.8; margin-bottom: 2px;}
+.gombalan-text{font-family: 'Caveat', cursive; font-size: 19px; color: #f1faee; line-height: 1.5;}
+.glow-text{color: #ff79c6; font-weight: bold; text-shadow: 0 0 8px #ff79c6, 0 0 15px #ff79c6;}
+
+/* Tabel Periodik */
+.periodic-band{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;max-width:500px;margin:16px auto 0;padding:0 10px}
+.el{width:38px;height:38px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;position:relative;color:#0a0714;box-shadow: 0 0 8px currentColor}
+.el:hover{transform:scale(1.25);box-shadow:0 0 18px currentColor;z-index:5}
+.el-sym{font-size:14px;font-weight:700;line-height:1}
+.el-num{font-size:9px;opacity:0.8;line-height:1}
+.el-tooltip{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);background:#ff5555;color:#fff;font-size:13px;padding:4px 8px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;font-family:'Caveat',cursive;box-shadow: 0 0 10px #ff5555}
+.el:hover .el-tooltip{opacity:1}
+
+@media (max-width: 600px) {
+  .title { font-size: 28px; }
+  .subtitle { font-size: 16px; margin-bottom: 20px; }
+
+  /* Bunga akan membungkus ke bawah jika layar terlalu sempit */
+  .flowers-row {
+    flex-wrap: wrap;
+    gap: 10px;
+    transform: scale(0.9);
+    margin-bottom: 5px;
+  }
+
+  /* Molekul disusun memanjang ke bawah supaya tidak berdempetan */
+  .molecule-row {
+    flex-direction: column;
+    gap: 20px;
+    margin: 15px 0;
+  }
+
+  /* Ukuran kotak pesan utama dan font */
+  .card { padding: 15px; }
+  .card-text { font-size: 17px; }
+  .card-formula { font-size: 11px; }
+
+  /* Labu-labu reaksi akan membungkus jika tidak muat */
+  .flask-row {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  /* Penyesuaian jarak kotak gombalan */
+  .gombalan-container {
+    padding: 15px 10px;
+    margin: 15px auto;
+  }
+
+  /* Menyesuaikan ukuran kotak-kotak unsur SEMANGAT & CANTIK */
+  .chemical-word {
+    gap: 6px !important;
+  }
+  .chem-box {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .chem-sym { font-size: 14px !important; margin-top: 4px; }
+  .chem-num { font-size: 7px !important; left: 4px; top: 3px; }
+  .chem-name { font-size: 7px; display: none; /* Sembunyikan teks nama unsur di HP agar rapi */ }
+  
+  .gombalan-text { font-size: 17px; }
+  .glow-text { font-size: 20px !important; }
+
+  .reaction-msg { font-size: 16px; }
+}
