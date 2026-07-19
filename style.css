@@ -504,38 +504,135 @@ footer {
 }
 
 /* RESPONSIVE MEDIA */
-@media (max-width: 992px) {
-    .about-grid, .products-grid, .contact-grid, .legality-grid {
-        grid-template-columns: 1fr;
+/* ==========================================================================
+   RESPONSIVE DESIGN OPTIMIZATION (BREAKPOINTS)
+   ========================================================================== */
+
+/* 1. LAYAR DESKTOP MEDIUM & LAPTOP (Maksimal 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        width: 85%;
     }
-    .acc-grid {
-        grid-template-columns: 1fr 1fr;
+    .hero-content h1 {
+        font-size: 3.5rem;
     }
 }
 
+/* 2. LAYAR TABLET / IPAD LANDSCAPE (Maksimal 992px) */
+@media (max-width: 992px) {
+    .section {
+        padding: 60px 0;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .about-grid, .products-grid, .contact-grid {
+        grid-template-columns: 1fr; /* Mengubah 2 kolom menjadi 1 kolom vertikal */
+        gap: 40px;
+    }
+    .about-image img {
+        height: 300px; /* Menyesuaikan tinggi gambar agar proporsional */
+    }
+    .legality-grid {
+        grid-template-columns: repeat(2, 1fr); /* Mengubah 3 kolom menjadi 2 kolom di tablet */
+        gap: 20px;
+    }
+    .acc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 3. LAYAR TABLET PORTRAIT / HP BESAR (Maksimal 768px) */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 10px 0;
+    }
     .menu-toggle {
-        display: block;
+        display: block; /* Memunculkan tombol hamburger menu */
     }
     .nav-menu {
-        position: absolute;
-        top: 70px;
+        position: fixed;
+        top: 65px;
         left: -100%;
         flex-direction: column;
         background-color: white;
         width: 100%;
+        height: calc(100vh - 65px); /* Memenuhi layar saat menu dibuka */
         text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        transition: 0.4s ease-in-out;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        padding-top: 30px;
     }
     .nav-menu.active {
-        left: 0;
+        left: 0; /* Menggeser menu masuk ke layar */
     }
     .nav-menu li {
-        margin: 15px 0;
+        margin: 20px 0;
+    }
+    .nav-menu li a {
+        font-size: 1.2rem;
+        display: block;
+        width: 100%;
+    }
+    .hero-section {
+        height: 90vh; /* Mengurangi tinggi sedikit agar pas di layar HP */
     }
     .hero-content h1 {
         font-size: 2.5rem;
+        padding: 0 10px;
+    }
+    .tagline {
+        font-size: 1.2rem;
+        padding: 0 15px;
+    }
+    .legality-grid {
+        grid-template-columns: 1fr; /* Menjadi 1 kolom penuh di layar HP */
+    }
+    .brand-values {
+        gap: 10px;
+    }
+    .value-badge {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 4. LAYAR HP KECIL (Maksimal 480px) */
+@media (max-width: 480px) {
+    .container {
+        width: 90%; /* Memberikan sedikit ruang di sisi kanan-kiri */
+    }
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 35px;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .tagline {
+        font-size: 1rem;
+    }
+    .btn {
+        width: 100%; /* Tombol memenuhi lebar layar ponsel agar mudah ditekan */
+        text-align: center;
+    }
+    .about-image img {
+        height: 220px;
+    }
+    .acc-grid {
+        grid-template-columns: 1fr; /* Keperluan pelengkap makanan menjadi baris tunggal */
+    }
+    .outlets-grid {
+        grid-template-columns: 1fr; /* Daftar outlet memanjang ke bawah dengan rapi */
+    }
+    .excel-card, .product-card, .legal-card {
+        padding: 20px; /* Mengurangi padding dalam agar area teks lebih luas */
+    }
+    .logo-text {
+        font-size: 1.1rem; /* Mengecilkan teks nama brand di navbar agar tidak menabrak tombol menu */
+    }
+    .nav-logo {
+        height: 35px;
     }
 }
 

@@ -1,4 +1,3 @@
-// DUMMY DATABASE (Visi & Misi, Produk, dan Outlet)
 const dummyMissions = [
     { icon: "fa-seedling", text: "Menyediakan produk sambal berkualitas tinggi dengan cita rasa yang konsisten." },
     { icon: "fa-lightbulb", text: "Memberikan solusi praktis bagi masyarakat untuk menikmati sambal tanpa harus membuatnya sendiri." },
@@ -10,23 +9,70 @@ const dummyMissions = [
 const dummyProducts = [
     { 
         name: "Sambel Botol Kita - Ukuran 135 ml", 
-        price: "Rp 12.000,00", 
         image: "images/sambal-135ml.png", 
         desc: "Kemasan praktis yang mudah dibawa bepergian, cocok untuk makan di kantor, saat traveling, atau aktivitas sehari-hari." 
     },
     { 
         name: "Sambel Botol Kita - Ukuran 250 ml", 
-        price: "Rp 22.000,00", 
         image: "images/sambal-250ml.png", 
         desc: "Kemasan lebih besar yang sangat cocok untuk stok sambal di rumah agar seluruh keluarga dapat menikmati kelezatannya kapan saja." 
     }
 ];
 
 const dummyOutlets = [
-    "Hypermart Big Mall", "Foodmart Lembuswana", "Planet Swalayan City Centrum", "Planet Swalayan Gatsu",
-    "Era Mart Citowns", "Era Fresh Revolusi", "Era Mart Loa Janan", "Era Fresh Siradj Salman",
-    "Meli Mart", "Joy Mart Pelita", "Joy Mart Bung Tomo", "Auto Swalayan", "Mega Swalayan",
-    "Hayyu Mart", "Hokki Swalayan", "Arjuna Baru", "Xs Mart M Said"
+    "Planet Swalayan City Centrum",
+    "Planet Swalayan Gatsu",
+    "Meli Mart",
+    "Joy Mart Pelita",
+    "Joy Mart Bung Tomo",
+    "Auto Swalayan",
+    "Mega Swalayan",
+    "Hayyu Mart",
+    "Hokki Swalayan",
+    "Arjuna Baru",
+    "Xs Mart M Said",
+    "Xs Mart Lambung",
+    "Xs Mart Pmi",
+    "Coop Korem",
+    "Family Mart",
+    "Swalayan 88 Imam Bonjol",
+    "Swalayan 88 Juanda",
+    "Pusat Oleh Oleh Najwa",
+    "Galery Etham Samarinda",
+    "Mm Mulawarman",
+    "Gbe Swalayan",
+    "Pandan Harum Mart",
+    "Bulek Nurul L 1",
+    "Koperasi Tms Ta 1",
+    "Koperasi Tms Ta 2",
+    "Yugo Mart",
+    "Foodmart Lembuswana",
+    "Hypermart Big Mall",
+    "Daging Keluarga",
+    "Era Mart Citowns",
+    "Era Fresh Revolusi",
+    "Era Mart Loa Janan",
+    "Era Fresh Siradj Salman",
+    "Era Fresh Di Panjaitan",
+    "Era Mart Tenggiri",
+    "Era Fresh Sentosa",
+    "Era 5000 Sebrang",
+    "Era Fresh Gatsu",
+    "Era Fresh Pm Noor 2",
+    "Era M2 Mart",
+    "Era Mart Pramuka",
+    "Era Mart Ring Road 1",
+    "Era Mart Jakarta 2",
+    "Era Mart Harum Nafsi",
+    "Era Mart Palaran",
+    "Era Mart Kebaktian",
+    "Era Mart L 3",
+    "Era Mart L 2",
+    "Era Mart Suryanata 1",
+    "Era Amin Mart",
+    "Era Dc Mart Ks Tubun",
+    "Era Fresh Bontang",
+    "Era Fresh Sangatta"
 ];
 
 // NAV MENU TOGGLE (MOBILE)
@@ -55,6 +101,7 @@ function loadMissions() {
     `).join('');
 }
 
+// FUNGSI LOAD PRODUK YANG SUDAH BERSIH DARI PRICE
 function loadProducts() {
     const list = document.getElementById('products-list');
     list.innerHTML = dummyProducts.map(p => `
@@ -64,7 +111,6 @@ function loadProducts() {
             </div>
             <div class="product-info">
                 <h3>${p.name}</h3>
-                <p class="price">${p.price}</p>
                 <p>${p.desc}</p>
             </div>
         </div>
@@ -94,28 +140,18 @@ searchInput.addEventListener('input', (e) => {
 
 // FITUR KIRIM FORM KE WHATSAPP
 const msgForm = document.getElementById('msgForm');
-
-msgForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Mencegah halaman reload saat form dikirim
-
-    // 1. Ambil data dari input form
-    const nama = document.getElementById('formNama').value;
-    const email = document.getElementById('formEmail').value;
-    const pesan = document.getElementById('formPesan').value;
-
-    // 2. Ganti nomor ini dengan nomor WhatsApp tokomu (Gunakan kode negara, tanpa tanda + atau spasi)
-    // Contoh nomor dari PDF: 081346560045 menjadi 6281346560045
-    const nomorWA = "6281346560045"; 
-
-    // 3. Susun format teks pesan yang akan dikirim
-    const teksPesan = `Halo Sambel Botol Kita, saya ingin bertanya.%0A%0A` +
-                      `*Nama:* ${encodeURIComponent(nama)}%0A` +
-                      `*Email:* ${encodeURIComponent(email)}%0A` +
-                      `*Pesan:* ${encodeURIComponent(pesan)}`;
-
-    // 4. Buka tautan WhatsApp API di tab baru
-    window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${teksPesan}`, '_blank');
-    
-    // Opsi tambahan: reset form setelah dikirim
-    msgForm.reset();
-});
+if(msgForm) {
+    msgForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nama = document.getElementById('formNama').value;
+        const email = document.getElementById('formEmail').value;
+        const pesan = document.getElementById('formPesan').value;
+        const nomorWA = "6281346560045"; 
+        const teksPesan = `Halo Sambel Botol Kita, saya ingin bertanya.%0A%0A` +
+                          `*Nama:* ${encodeURIComponent(nama)}%0A` +
+                          `*Email:* ${encodeURIComponent(email)}%0A` +
+                          `*Pesan:* ${encodeURIComponent(pesan)}`;
+        window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${teksPesan}`, '_blank');
+        msgForm.reset();
+    });
+}
