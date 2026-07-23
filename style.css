@@ -700,3 +700,44 @@ footer {
     font-weight: 700;
     color: var(--primary-color);
 }
+
+/* ==========================================================================
+   MARKETPLACE & SOCIAL MEDIA BUTTONS
+   ========================================================================== */
+.marketplace-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-mp {
+    flex: 1; /* Membuat tombol membagi ruang sama rata */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: white;
+    transition: var(--transition);
+}
+
+.btn-shopee {
+    background-color: #EE4D2D; /* Warna Oranye Shopee */
+}
+.btn-shopee:hover {
+    background-color: #d74224;
+    transform: translateY(-2px);
+}
+
+.btn-tokopedia {
+    background-color: #00AA5B; /* Warna Hijau Tokopedia */
+}
+.btn-tokopedia:hover {
+    background-color: #008f4c;
+    transform: translateY(-2px);
+}

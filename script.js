@@ -10,14 +10,47 @@ const dummyProducts = [
     { 
         name: "Sambel Botol Kita - Ukuran 135 ml", 
         image: "images/sambal-135ml.png", 
-        desc: "Kemasan praktis yang mudah dibawa bepergian, cocok untuk makan di kantor, saat traveling, atau aktivitas sehari-hari." 
+        desc: "Kemasan praktis yang mudah dibawa bepergian, cocok untuk makan di kantor, saat traveling, atau aktivitas sehari-hari.",
+        // Ganti link di bawah dengan link asli toko Anda
+        linkShopee: "https://shopee.co.id/",
+        linkTokopedia: "https://tokopedia.com/"
     },
     { 
         name: "Sambel Botol Kita - Ukuran 250 ml", 
         image: "images/sambal-250ml.png", 
-        desc: "Kemasan lebih besar yang sangat cocok untuk stok sambal di rumah agar seluruh keluarga dapat menikmati kelezatannya kapan saja." 
+        desc: "Kemasan lebih besar yang sangat cocok untuk stok sambal di rumah agar seluruh keluarga dapat menikmati kelezatannya kapan saja.",
+        // Ganti link di bawah dengan link asli toko Anda
+        linkShopee: "https://shopee.co.id/",
+        linkTokopedia: "https://tokopedia.com/"
     }
 ];
+
+// FUNGSI LOAD PRODUK YANG SUDAH DITAMBAH TOMBOL MARKETPLACE
+function loadProducts() {
+    const list = document.getElementById('products-list');
+    list.innerHTML = dummyProducts.map(p => `
+        <div class="product-card">
+            <div class="product-image-area" style="background: none; height: auto; padding: 20px;">
+                <img src="${p.image}" alt="${p.name}">
+            </div>
+            <div class="product-info">
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+                
+                <!-- TOMBOL SHOPEE & TOKOPEDIA -->
+                <div class="marketplace-links">
+                    <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee">
+                        <i class="fa-solid fa-bag-shopping"></i> Shopee
+                    </a>
+                    <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia">
+                        <i class="fa-solid fa-store"></i> Tokopedia
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    `).join('');
+}
 
 const dummyOutlets = [
     "Planet Swalayan City Centrum",
