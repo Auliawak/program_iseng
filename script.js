@@ -127,33 +127,40 @@ function loadOutlets() {
 const btnLoadMore = document.getElementById('btnLoadMoreOutlets');
 const btnShowLess = document.getElementById('btnShowLessOutlets');
 
+// Pastikan kedua tombol terdeteksi oleh HTML
 if (btnLoadMore && btnShowLess) {
-    // Aksi saat tombol "Lihat Semua" diklik
+    
+    // AKSI KETIKA TOMBOL LIHAT SEMUA DIKLIK
     btnLoadMore.addEventListener('click', () => {
+        // Munculkan semua outlet
         const hiddenCards = document.querySelectorAll('.outlet-hidden');
         hiddenCards.forEach(card => card.classList.remove('outlet-hidden'));
         
-        btnLoadMore.style.display = 'none'; // Sembunyikan tombol "Lihat Semua"
-        btnShowLess.style.display = 'block'; // Munculkan tombol "Lebih Sedikit"
+        // Ganti Tombol
+        btnLoadMore.style.display = 'none'; 
+        btnShowLess.style.display = 'block'; 
     });
 
-    // Aksi saat tombol "Lebih Sedikit" diklik
+    // AKSI KETIKA TOMBOL LEBIH SEDIKIT DIKLIK
     btnShowLess.addEventListener('click', () => {
+        // Sembunyikan kembali outlet 13 ke atas
         const cards = document.querySelectorAll('.outlet-card');
         cards.forEach((card, index) => {
             if (index >= 12) {
-                card.classList.add('outlet-hidden'); // Sembunyikan outlet urutan 13 ke atas
+                card.classList.add('outlet-hidden'); 
             }
         });
         
-        btnShowLess.style.display = 'none'; // Sembunyikan tombol "Lebih Sedikit"
-        btnLoadMore.style.display = 'block'; // Munculkan kembali tombol "Lihat Semua"
+        // Ganti Tombol
+        btnShowLess.style.display = 'none'; 
+        btnLoadMore.style.display = 'block'; 
         
-        // Animasi otomatis scroll ke atas kembali ke Judul Outlet
+        // Otomatis scroll ke atas dengan halus
         document.getElementById('outlets').scrollIntoView({ behavior: 'smooth' });
     });
 }
 
+// FITUR PENCARIAN
 const searchInput = document.getElementById('outletSearch');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -161,10 +168,8 @@ if (searchInput) {
         const cards = document.querySelectorAll('.outlet-card');
         
         if (text.length > 0) {
-            // Sembunyikan kedua tombol jika pengunjung sedang mengetik pencarian
             if (btnLoadMore) btnLoadMore.style.display = 'none';
             if (btnShowLess) btnShowLess.style.display = 'none';
-            
             cards.forEach(card => {
                 card.classList.remove('outlet-hidden'); 
                 if (card.textContent.toLowerCase().includes(text)) {
@@ -174,10 +179,8 @@ if (searchInput) {
                 }
             });
         } else {
-            // Jika kolom pencarian dihapus/kosong, kembalikan ke tampilan 12 awal
             if (btnLoadMore) btnLoadMore.style.display = 'block';
             if (btnShowLess) btnShowLess.style.display = 'none';
-            
             cards.forEach((card, index) => {
                 card.style.display = ""; 
                 if (index >= 12) {
