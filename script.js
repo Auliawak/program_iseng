@@ -1,4 +1,6 @@
-// DATA VISI MISI
+// ==========================================================
+// 1. DATA BASE (Visi Misi, Produk, Outlet)
+// ==========================================================
 const dummyMissions = [
     { icon: "fa-seedling", text: "Menyediakan produk sambal berkualitas tinggi dengan cita rasa yang konsisten." },
     { icon: "fa-lightbulb", text: "Memberikan solusi praktis bagi masyarakat untuk menikmati sambal tanpa harus membuatnya sendiri." },
@@ -7,7 +9,6 @@ const dummyMissions = [
     { icon: "fa-people-carry-box", text: "Mendukung pertumbuhan UMKM lokal melalui produk berkualitas." }
 ];
 
-// DATA PRODUK (DENGAN LINK SHOPEE & TOKPED)
 const dummyProducts = [
     { 
         name: "Sambel Botol Kita - Ukuran 135 ml", 
@@ -25,7 +26,6 @@ const dummyProducts = [
     }
 ];
 
-// DATA OUTLET
 const dummyOutlets = [
     "Planet Swalayan City Centrum", "Planet Swalayan Gatsu", "Meli Mart", "Joy Mart Pelita",
     "Joy Mart Bung Tomo", "Auto Swalayan", "Mega Swalayan", "Hayyu Mart", "Hokki Swalayan",
@@ -42,25 +42,30 @@ const dummyOutlets = [
     "Era Dc Mart Ks Tubun", "Era Fresh Bontang", "Era Fresh Sangatta"
 ];
 
-// NAV MENU TOGGLE (MOBILE)
+// ==========================================================
+// 2. FITUR MENU NAVIGASI HP (MOBILE)
+// ==========================================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navMenu = document.querySelector('.nav-menu');
 
-mobileMenu.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    mobileMenu.classList.toggle('is-active');
-});
-
-// MENUTUP MENU OTOMATIS SAAT DIKLIK DI HP
-const navLinks = document.querySelectorAll('.nav-menu li a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        mobileMenu.classList.remove('is-active');
+if (mobileMenu && navMenu) {
+    mobileMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('is-active');
     });
-});
 
-// LOAD DATA SETELAH DOM SIAP
+    const navLinks = document.querySelectorAll('.nav-menu li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenu.classList.remove('is-active');
+        });
+    });
+}
+
+// ==========================================================
+// 3. MENAMPILKAN DATA KE WEBSITE KETIKA HALAMAN DIBUKA
+// ==========================================================
 document.addEventListener('DOMContentLoaded', () => {
     loadMissions();
     loadProducts();
@@ -69,107 +74,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function loadMissions() {
     const list = document.getElementById('mission-list');
-    list.innerHTML = dummyMissions.map(m => `
-        <div class="mission-card">
-            <i class="fa-solid ${m.icon}"></i>
-            <p>${m.text}</p>
-        </div>
-    `).join('');
+    if (list) {
+        list.innerHTML = dummyMissions.map(m => `
+            <div class="mission-card">
+                <i class="fa-solid ${m.icon}"></i>
+                <p>${m.text}</p>
+            </div>
+        `).join('');
+    }
 }
 
 function loadProducts() {
     const list = document.getElementById('products-list');
-    list.innerHTML = dummyProducts.map(p => `
-        <div class="product-card">
-            <div class="product-image-area" style="background: none; height: auto; padding: 20px;">
-                <img src="${p.image}" alt="${p.name}">
-            </div>
-            <div class="product-info">
-                <h3>${p.name}</h3>
-                <p>${p.desc}</p>
-                
-                <div class="marketplace-links">
-                    <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee">
-                        <i class="fa-solid fa-bag-shopping"></i> Shopee
-                    </a>
-                    <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia">
-                        <i class="fa-solid fa-store"></i> Tokopedia
-                    </a>
+    if (list) {
+        list.innerHTML = dummyProducts.map(p => `
+            <div class="product-card">
+                <div class="product-image-area" style="background: none; height: auto; padding: 20px;">
+                    <img src="${p.image}" alt="${p.name}">
+                </div>
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <p>${p.desc}</p>
+                    
+                    <div class="marketplace-links">
+                        <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee">
+                            <i class="fa-solid fa-bag-shopping"></i> Shopee
+                        </a>
+                        <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia">
+                            <i class="fa-solid fa-store"></i> Tokopedia
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
+    }
 }
 
-// FUNGSI LOAD OUTLET (HANYA MENAMPILKAN 12 AWAL)
+// Hanya memuat 12 outlet pertama di awal
 function loadOutlets() {
     const list = document.getElementById('outlets-list');
-    list.innerHTML = dummyOutlets.map((o, index) => {
-        // Menyembunyikan outlet urutan ke-13 dan seterusnya
-        const hiddenClass = index >= 12 ? 'outlet-hidden' : '';
-        return `<div class="outlet-card ${hiddenClass}">${o}</div>`;
-    }).join('');
+    if (list) {
+        list.innerHTML = dummyOutlets.map((o, index) => {
+            const hiddenClass = index >= 12 ? 'outlet-hidden' : '';
+            return `<div class="outlet-card ${hiddenClass}">${o}</div>`;
+        }).join('');
+    }
 }
 
-// FUNGSI TOMBOL "LIHAT SEMUA OUTLET"
+// ==========================================================
+// 4. FITUR TOMBOL LIHAT SEMUA OUTLET & PENCARIAN
+// ==========================================================
 const btnLoadMore = document.getElementById('btnLoadMoreOutlets');
 if (btnLoadMore) {
     btnLoadMore.addEventListener('click', () => {
-        // Hapus class hidden dari semua outlet
         const hiddenCards = document.querySelectorAll('.outlet-hidden');
         hiddenCards.forEach(card => card.classList.remove('outlet-hidden'));
-        
-        // Sembunyikan tombol setelah semua outlet terbuka
-        btnLoadMore.style.display = 'none';
+        btnLoadMore.style.display = 'none'; // Sembunyikan tombol setelah diklik
     });
 }
 
-// FITUR PENCARIAN OUTLET (DIPERBARUI)
 const searchInput = document.getElementById('outletSearch');
-searchInput.addEventListener('input', (e) => {
-    const text = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.outlet-card');
-    
-    if (text.length > 0) {
-        // Jika sedang mengetik: Hilangkan batasan 12 awal, tampilkan yang cocok saja
-        if(btnLoadMore) btnLoadMore.style.display = 'none';
-        cards.forEach(card => {
-            card.classList.remove('outlet-hidden'); 
-            if (card.textContent.toLowerCase().includes(text)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    } else {
-        // Jika kotak pencarian kosong kembali: Kembalikan ke mode 12 awal
-        if(btnLoadMore) btnLoadMore.style.display = 'block';
-        cards.forEach((card, index) => {
-            card.style.display = ""; // Reset inline style
-            if (index >= 12) {
-                card.classList.add('outlet-hidden');
-            }
-        });
-    }
-});
-
-// FITUR PENCARIAN OUTLET
-const searchInput = document.getElementById('outletSearch');
-searchInput.addEventListener('input', (e) => {
-    const text = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.outlet-card');
-    cards.forEach(card => {
-        if (card.textContent.toLowerCase().includes(text)) {
-            card.style.display = "block";
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const text = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.outlet-card');
+        
+        if (text.length > 0) {
+            if (btnLoadMore) btnLoadMore.style.display = 'none';
+            cards.forEach(card => {
+                card.classList.remove('outlet-hidden'); 
+                if (card.textContent.toLowerCase().includes(text)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         } else {
-            card.style.display = "none";
+            if (btnLoadMore) btnLoadMore.style.display = 'block';
+            cards.forEach((card, index) => {
+                card.style.display = ""; 
+                if (index >= 12) {
+                    card.classList.add('outlet-hidden');
+                }
+            });
         }
     });
-});
+}
 
-// FITUR KIRIM FORM KE WHATSAPP
+// ==========================================================
+// 5. FITUR KIRIM PESAN KE WHATSAPP
+// ==========================================================
 const msgForm = document.getElementById('msgForm');
-if(msgForm) {
+if (msgForm) {
     msgForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const nama = document.getElementById('formNama').value;
