@@ -1,5 +1,5 @@
 // ==========================================================
-// 1. DATA BASE (Visi Misi, Produk, Outlet)
+// 1. DATA BASE
 // ==========================================================
 const dummyMissions = [
     { icon: "fa-seedling", text: "Menyediakan produk sambal berkualitas tinggi dengan cita rasa yang konsisten." },
@@ -11,18 +11,14 @@ const dummyMissions = [
 
 const dummyProducts = [
     { 
-        name: "Sambel Botol Kita - Ukuran 135 ml", 
-        image: "images/sambal-135ml.png", 
+        name: "Sambel Botol Kita - Ukuran 135 ml", image: "images/sambal-135ml.png", 
         desc: "Kemasan praktis yang mudah dibawa bepergian, cocok untuk makan di kantor, saat traveling, atau aktivitas sehari-hari.",
-        linkShopee: "https://id.shp.ee/vRQX5EhV",
-        linkTokopedia: "https://tk.tokopedia.com/ZSXGg4kXL/"
+        linkShopee: "https://shopee.co.id/", linkTokopedia: "https://tokopedia.com/"
     },
     { 
-        name: "Sambel Botol Kita - Ukuran 250 ml", 
-        image: "images/sambal-250ml.png", 
+        name: "Sambel Botol Kita - Ukuran 250 ml", image: "images/sambal-250ml.png", 
         desc: "Kemasan lebih besar yang sangat cocok untuk stok sambal di rumah agar seluruh keluarga dapat menikmati kelezatannya kapan saja.",
-        linkShopee: "https://id.shp.ee/vRQX5EhV",
-        linkTokopedia: "https://tk.tokopedia.com/ZSXGg4kXL/"
+        linkShopee: "https://shopee.co.id/", linkTokopedia: "https://tokopedia.com/"
     }
 ];
 
@@ -43,7 +39,7 @@ const dummyOutlets = [
 ];
 
 // ==========================================================
-// 2. FITUR MENU NAVIGASI HP (MOBILE)
+// 2. NAVIGASI MOBILE
 // ==========================================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navMenu = document.querySelector('.nav-menu');
@@ -53,114 +49,74 @@ if (mobileMenu && navMenu) {
         navMenu.classList.toggle('active');
         mobileMenu.classList.toggle('is-active');
     });
-
-    const navLinks = document.querySelectorAll('.nav-menu li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            mobileMenu.classList.remove('is-active');
-        });
-    });
 }
 
 // ==========================================================
-// 3. MENAMPILKAN DATA KE WEBSITE KETIKA HALAMAN DIBUKA
+// 3. RENDER DATA (AMAN UNTUK MULTI-PAGE)
 // ==========================================================
 document.addEventListener('DOMContentLoaded', () => {
-    loadMissions();
-    loadProducts();
-    loadOutlets();
+    if(document.getElementById('mission-list')) loadMissions();
+    if(document.getElementById('products-list')) loadProducts();
+    if(document.getElementById('outlets-list')) loadOutlets();
 });
 
 function loadMissions() {
-    const list = document.getElementById('mission-list');
-    if (list) {
-        list.innerHTML = dummyMissions.map(m => `
-            <div class="mission-card">
-                <i class="fa-solid ${m.icon}"></i>
-                <p>${m.text}</p>
-            </div>
-        `).join('');
-    }
+    document.getElementById('mission-list').innerHTML = dummyMissions.map(m => `
+        <div class="mission-card">
+            <i class="fa-solid ${m.icon}"></i>
+            <p>${m.text}</p>
+        </div>
+    `).join('');
 }
 
 function loadProducts() {
-    const list = document.getElementById('products-list');
-    if (list) {
-        list.innerHTML = dummyProducts.map(p => `
-            <div class="product-card">
-                <div class="product-image-area" style="background: none; height: auto; padding: 20px;">
-                    <img src="${p.image}" alt="${p.name}">
-                </div>
-                <div class="product-info">
-                    <h3>${p.name}</h3>
-                    <p>${p.desc}</p>
-                    
-                    <div class="marketplace-links">
-                        <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee">
-                            <i class="fa-solid fa-bag-shopping"></i> Shopee
-                        </a>
-                        <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia">
-                            <i class="fa-solid fa-store"></i> Tokopedia
-                        </a>
-                    </div>
+    document.getElementById('products-list').innerHTML = dummyProducts.map(p => `
+        <div class="product-card">
+            <div class="product-image-area">
+                <img src="${p.image}" alt="${p.name}">
+            </div>
+            <div class="product-info">
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+                <div class="marketplace-links">
+                    <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee"><i class="fa-solid fa-bag-shopping"></i> Shopee</a>
+                    <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia"><i class="fa-solid fa-store"></i> Tokopedia</a>
                 </div>
             </div>
-        `).join('');
-    }
+        </div>
+    `).join('');
 }
 
-// Hanya memuat 12 outlet pertama di awal
 function loadOutlets() {
-    const list = document.getElementById('outlets-list');
-    if (list) {
-        list.innerHTML = dummyOutlets.map((o, index) => {
-            const hiddenClass = index >= 12 ? 'outlet-hidden' : '';
-            return `<div class="outlet-card ${hiddenClass}">${o}</div>`;
-        }).join('');
-    }
+    document.getElementById('outlets-list').innerHTML = dummyOutlets.map((o, index) => {
+        const hiddenClass = index >= 12 ? 'outlet-hidden' : '';
+        return `<div class="outlet-card ${hiddenClass}">${o}</div>`;
+    }).join('');
 }
 
 // ==========================================================
-// 4. FITUR TOMBOL LIHAT SEMUA, SEMBUNYIKAN, & PENCARIAN
+// 4. LOGIKA TOMBOL OUTLET & PENCARIAN
 // ==========================================================
 const btnLoadMore = document.getElementById('btnLoadMoreOutlets');
 const btnShowLess = document.getElementById('btnShowLessOutlets');
 
-// Pastikan kedua tombol terdeteksi oleh HTML
 if (btnLoadMore && btnShowLess) {
-    
-    // AKSI KETIKA TOMBOL LIHAT SEMUA DIKLIK
     btnLoadMore.addEventListener('click', () => {
-        // Munculkan semua outlet
-        const hiddenCards = document.querySelectorAll('.outlet-hidden');
-        hiddenCards.forEach(card => card.classList.remove('outlet-hidden'));
-        
-        // Ganti Tombol
+        document.querySelectorAll('.outlet-hidden').forEach(card => card.classList.remove('outlet-hidden'));
         btnLoadMore.style.display = 'none'; 
         btnShowLess.style.display = 'block'; 
     });
 
-    // AKSI KETIKA TOMBOL LEBIH SEDIKIT DIKLIK
     btnShowLess.addEventListener('click', () => {
-        // Sembunyikan kembali outlet 13 ke atas
-        const cards = document.querySelectorAll('.outlet-card');
-        cards.forEach((card, index) => {
-            if (index >= 12) {
-                card.classList.add('outlet-hidden'); 
-            }
+        document.querySelectorAll('.outlet-card').forEach((card, index) => {
+            if (index >= 12) card.classList.add('outlet-hidden'); 
         });
-        
-        // Ganti Tombol
         btnShowLess.style.display = 'none'; 
         btnLoadMore.style.display = 'block'; 
-        
-        // Otomatis scroll ke atas dengan halus
         document.getElementById('outlets').scrollIntoView({ behavior: 'smooth' });
     });
 }
 
-// FITUR PENCARIAN
 const searchInput = document.getElementById('outletSearch');
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -172,43 +128,31 @@ if (searchInput) {
             if (btnShowLess) btnShowLess.style.display = 'none';
             cards.forEach(card => {
                 card.classList.remove('outlet-hidden'); 
-                if (card.textContent.toLowerCase().includes(text)) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = card.textContent.toLowerCase().includes(text) ? "block" : "none";
             });
         } else {
             if (btnLoadMore) btnLoadMore.style.display = 'block';
             if (btnShowLess) btnShowLess.style.display = 'none';
             cards.forEach((card, index) => {
                 card.style.display = ""; 
-                if (index >= 12) {
-                    card.classList.add('outlet-hidden');
-                } else {
-                    card.classList.remove('outlet-hidden');
-                }
+                if (index >= 12) card.classList.add('outlet-hidden');
+                else card.classList.remove('outlet-hidden');
             });
         }
     });
 }
 
 // ==========================================================
-// 5. FITUR KIRIM PESAN KE WHATSAPP
+// 5. FORM WHATSAPP
 // ==========================================================
 const msgForm = document.getElementById('msgForm');
 if (msgForm) {
     msgForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const nama = document.getElementById('formNama').value;
-        const email = document.getElementById('formEmail').value;
         const pesan = document.getElementById('formPesan').value;
-        const nomorWA = "6281346560045"; 
-        const teksPesan = `Halo Sambel Botol Kita, saya ingin bertanya.%0A%0A` +
-                          `*Nama:* ${encodeURIComponent(nama)}%0A` +
-                          `*Email:* ${encodeURIComponent(email)}%0A` +
-                          `*Pesan:* ${encodeURIComponent(pesan)}`;
-        window.open(`https://api.whatsapp.com/send?phone=${nomorWA}&text=${teksPesan}`, '_blank');
+        const teks = `Halo Sambel Botol Kita, saya ingin bertanya.%0A%0A*Nama:* ${encodeURIComponent(nama)}%0A*Pesan:* ${encodeURIComponent(pesan)}`;
+        window.open(`https://api.whatsapp.com/send?phone=6281346560045&text=${teks}`, '_blank');
         msgForm.reset();
     });
 }

@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda - Sambel Botol Kita</title>
+    <title>Outlet Kami - Sambel Botol Kita</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- NAVBAR UTAMA -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo-container">
-                <!-- Pastikan gambar logo Anda ada di folder images -->
                 <img src="images/logo.png" alt="Logo" class="nav-logo">
                 <span class="logo-text">SAMBEL BOTOL KITA</span>
             </a>
@@ -28,14 +27,25 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="hero-section">
-        <div class="hero-content">
-            <h1>SAMBEL BOTOL KITA</h1>
-            <p class="tagline">Menyajikan Cita Rasa Autentik dan Pedas Mantap di Setiap Gigitan!</p>
-            <a href="produk.html" class="btn btn-primary">Lihat Produk Kami</a>
+    <!-- OUTLETS SECTION -->
+    <section id="outlets" class="section">
+        <div class="container">
+            <h2 class="section-title">Outlet Kami</h2>
+            <div class="search-box">
+                <input type="text" id="outletSearch" placeholder="Cari nama swalayan...">
+            </div>
+            
+            <div class="outlets-grid" id="outlets-list">
+                <!-- Dimuat otomatis oleh JS -->
+            </div>
+            
+            <!-- TOMBOL LIHAT LEBIH BANYAK / SEDIKIT -->
+            <div style="display: flex; justify-content: center; margin-top: 30px;">
+                <button id="btnLoadMoreOutlets" class="btn btn-primary" style="width: 100%; max-width: 300px;">Lihat Semua Outlet</button>
+                <button id="btnShowLessOutlets" class="btn btn-secondary" style="display: none; width: 100%; max-width: 300px;">Tampilkan Lebih Sedikit</button>
+            </div>
         </div>
-    </header>
+    </section>
 
     <footer>
         <div class="container text-center">

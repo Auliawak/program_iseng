@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Sambel Botol Kita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="images/logo.png" alt="Logo" class="nav-logo">
+                <span class="logo-text">SAMBEL BOTOL KITA</span>
+            </a>
+            <button class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><a href="produk.html">Produk</a></li>
+                <li><a href="outlet.html">Outlet</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTACT SECTION -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-grid">
+                <!-- Info Kontak & Social Media -->
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 20px;">Sambel Botol Kita</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> Jl. Pemuda IV, Sungai Pinang, Samarinda</p>
+                    <p><i class="fa-solid fa-phone"></i> 081346560045</p>
+                    <p><i class="fa-solid fa-envelope"></i> sambelbotolkita@gmail.com</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <p>
+                            <i class="fa-brands fa-instagram" style="color: #E1306C; font-size: 1.5rem;"></i> 
+                            <a href="https://www.instagram.com/sambelbotolkita?igsh=MTFpODd2aHdpdDM4Mw==" target="_blank" style="color: var(--text-dark); text-decoration: none; font-weight: 600;">@sambelbotolkita</a>
+                        </p>
+                        <p>
+                            <i class="fa-brands fa-tiktok" style="color: #000000; font-size: 1.5rem;"></i> 
+                            <a href="https://www.tiktok.com/@sambelbotolkita?_r=1&_t=ZS-98GnYfwCz8H" target="_blank" style="color: var(--text-dark); text-decoration: none; font-weight: 600;">@sambelbotolkita</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Formulir WhatsApp -->
+                <form class="contact-form" id="msgForm">
+                    <input type="text" id="formNama" placeholder="Nama Anda" required>
+                    <input type="email" id="formEmail" placeholder="Email Anda (Opsional)">
+                    <textarea id="formPesan" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan ke WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 Sambel Botol Kita. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
