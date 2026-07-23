@@ -13,12 +13,12 @@ const dummyProducts = [
     { 
         name: "Sambel Botol Kita - Ukuran 135 ml", image: "images/sambal-135ml.png", 
         desc: "Kemasan praktis yang mudah dibawa bepergian, cocok untuk makan di kantor, saat traveling, atau aktivitas sehari-hari.",
-        linkShopee: "https://shopee.co.id/", linkTokopedia: "https://tokopedia.com/"
+        linkShopee: "https://id.shp.ee/vRQX5EhV", linkTokopedia: "https://tk.tokopedia.com/ZSXGg4kXL/"
     },
     { 
         name: "Sambel Botol Kita - Ukuran 250 ml", image: "images/sambal-250ml.png", 
         desc: "Kemasan lebih besar yang sangat cocok untuk stok sambal di rumah agar seluruh keluarga dapat menikmati kelezatannya kapan saja.",
-        linkShopee: "https://shopee.co.id/", linkTokopedia: "https://tokopedia.com/"
+        linkShopee: "https://id.shp.ee/vRQX5EhV", linkTokopedia: "https://tk.tokopedia.com/ZSXGg4kXL/"
     }
 ];
 
