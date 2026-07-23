@@ -101,12 +101,57 @@ function loadProducts() {
     `).join('');
 }
 
+// FUNGSI LOAD OUTLET (HANYA MENAMPILKAN 12 AWAL)
 function loadOutlets() {
     const list = document.getElementById('outlets-list');
-    list.innerHTML = dummyOutlets.map(o => `
-        <div class="outlet-card">${o}</div>
-    `).join('');
+    list.innerHTML = dummyOutlets.map((o, index) => {
+        // Menyembunyikan outlet urutan ke-13 dan seterusnya
+        const hiddenClass = index >= 12 ? 'outlet-hidden' : '';
+        return `<div class="outlet-card ${hiddenClass}">${o}</div>`;
+    }).join('');
 }
+
+// FUNGSI TOMBOL "LIHAT SEMUA OUTLET"
+const btnLoadMore = document.getElementById('btnLoadMoreOutlets');
+if (btnLoadMore) {
+    btnLoadMore.addEventListener('click', () => {
+        // Hapus class hidden dari semua outlet
+        const hiddenCards = document.querySelectorAll('.outlet-hidden');
+        hiddenCards.forEach(card => card.classList.remove('outlet-hidden'));
+        
+        // Sembunyikan tombol setelah semua outlet terbuka
+        btnLoadMore.style.display = 'none';
+    });
+}
+
+// FITUR PENCARIAN OUTLET (DIPERBARUI)
+const searchInput = document.getElementById('outletSearch');
+searchInput.addEventListener('input', (e) => {
+    const text = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.outlet-card');
+    
+    if (text.length > 0) {
+        // Jika sedang mengetik: Hilangkan batasan 12 awal, tampilkan yang cocok saja
+        if(btnLoadMore) btnLoadMore.style.display = 'none';
+        cards.forEach(card => {
+            card.classList.remove('outlet-hidden'); 
+            if (card.textContent.toLowerCase().includes(text)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    } else {
+        // Jika kotak pencarian kosong kembali: Kembalikan ke mode 12 awal
+        if(btnLoadMore) btnLoadMore.style.display = 'block';
+        cards.forEach((card, index) => {
+            card.style.display = ""; // Reset inline style
+            if (index >= 12) {
+                card.classList.add('outlet-hidden');
+            }
+        });
+    }
+});
 
 // FITUR PENCARIAN OUTLET
 const searchInput = document.getElementById('outletSearch');
