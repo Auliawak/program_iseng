@@ -1,3 +1,4 @@
+// DATA VISI MISI
 const dummyMissions = [
     { icon: "fa-seedling", text: "Menyediakan produk sambal berkualitas tinggi dengan cita rasa yang konsisten." },
     { icon: "fa-lightbulb", text: "Memberikan solusi praktis bagi masyarakat untuk menikmati sambal tanpa harus membuatnya sendiri." },
@@ -6,106 +7,39 @@ const dummyMissions = [
     { icon: "fa-people-carry-box", text: "Mendukung pertumbuhan UMKM lokal melalui produk berkualitas." }
 ];
 
+// DATA PRODUK (DENGAN LINK SHOPEE & TOKPED)
 const dummyProducts = [
     { 
         name: "Sambel Botol Kita - Ukuran 135 ml", 
         image: "images/sambal-135ml.png", 
         desc: "Kemasan praktis yang mudah dibawa bepergian, cocok untuk makan di kantor, saat traveling, atau aktivitas sehari-hari.",
-        // Ganti link di bawah dengan link asli toko Anda
-        linkShopee: "https://id.shp.ee/vRQX5EhV",
+        linkShopee: "hhttps://id.shp.ee/vRQX5EhV",
         linkTokopedia: "https://tk.tokopedia.com/ZSXGg4kXL/"
     },
     { 
         name: "Sambel Botol Kita - Ukuran 250 ml", 
         image: "images/sambal-250ml.png", 
         desc: "Kemasan lebih besar yang sangat cocok untuk stok sambal di rumah agar seluruh keluarga dapat menikmati kelezatannya kapan saja.",
-        // Ganti link di bawah dengan link asli toko Anda
         linkShopee: "https://id.shp.ee/vRQX5EhV",
         linkTokopedia: "https://tk.tokopedia.com/ZSXGg4kXL/"
     }
 ];
 
-// FUNGSI LOAD PRODUK YANG SUDAH DITAMBAH TOMBOL MARKETPLACE
-function loadProducts() {
-    const list = document.getElementById('products-list');
-    list.innerHTML = dummyProducts.map(p => `
-        <div class="product-card">
-            <div class="product-image-area" style="background: none; height: auto; padding: 20px;">
-                <img src="${p.image}" alt="${p.name}">
-            </div>
-            <div class="product-info">
-                <h3>${p.name}</h3>
-                <p>${p.desc}</p>
-                
-                <!-- TOMBOL SHOPEE & TOKOPEDIA -->
-                <div class="marketplace-links">
-                    <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee">
-                        <i class="fa-solid fa-bag-shopping"></i> Shopee
-                    </a>
-                    <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia">
-                        <i class="fa-solid fa-store"></i> Tokopedia
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    `).join('');
-}
-
+// DATA OUTLET
 const dummyOutlets = [
-    "Planet Swalayan City Centrum",
-    "Planet Swalayan Gatsu",
-    "Meli Mart",
-    "Joy Mart Pelita",
-    "Joy Mart Bung Tomo",
-    "Auto Swalayan",
-    "Mega Swalayan",
-    "Hayyu Mart",
-    "Hokki Swalayan",
-    "Arjuna Baru",
-    "Xs Mart M Said",
-    "Xs Mart Lambung",
-    "Xs Mart Pmi",
-    "Coop Korem",
-    "Family Mart",
-    "Swalayan 88 Imam Bonjol",
-    "Swalayan 88 Juanda",
-    "Pusat Oleh Oleh Najwa",
-    "Galery Etham Samarinda",
-    "Mm Mulawarman",
-    "Gbe Swalayan",
-    "Pandan Harum Mart",
-    "Bulek Nurul L 1",
-    "Koperasi Tms Ta 1",
-    "Koperasi Tms Ta 2",
-    "Yugo Mart",
-    "Foodmart Lembuswana",
-    "Hypermart Big Mall",
-    "Daging Keluarga",
-    "Era Mart Citowns",
-    "Era Fresh Revolusi",
-    "Era Mart Loa Janan",
-    "Era Fresh Siradj Salman",
-    "Era Fresh Di Panjaitan",
-    "Era Mart Tenggiri",
-    "Era Fresh Sentosa",
-    "Era 5000 Sebrang",
-    "Era Fresh Gatsu",
-    "Era Fresh Pm Noor 2",
-    "Era M2 Mart",
-    "Era Mart Pramuka",
-    "Era Mart Ring Road 1",
-    "Era Mart Jakarta 2",
-    "Era Mart Harum Nafsi",
-    "Era Mart Palaran",
-    "Era Mart Kebaktian",
-    "Era Mart L 3",
-    "Era Mart L 2",
-    "Era Mart Suryanata 1",
-    "Era Amin Mart",
-    "Era Dc Mart Ks Tubun",
-    "Era Fresh Bontang",
-    "Era Fresh Sangatta"
+    "Planet Swalayan City Centrum", "Planet Swalayan Gatsu", "Meli Mart", "Joy Mart Pelita",
+    "Joy Mart Bung Tomo", "Auto Swalayan", "Mega Swalayan", "Hayyu Mart", "Hokki Swalayan",
+    "Arjuna Baru", "Xs Mart M Said", "Xs Mart Lambung", "Xs Mart Pmi", "Coop Korem",
+    "Family Mart", "Swalayan 88 Imam Bonjol", "Swalayan 88 Juanda", "Pusat Oleh Oleh Najwa",
+    "Galery Etham Samarinda", "Mm Mulawarman", "Gbe Swalayan", "Pandan Harum Mart",
+    "Bulek Nurul L 1", "Koperasi Tms Ta 1", "Koperasi Tms Ta 2", "Yugo Mart",
+    "Foodmart Lembuswana", "Hypermart Big Mall", "Daging Keluarga", "Era Mart Citowns",
+    "Era Fresh Revolusi", "Era Mart Loa Janan", "Era Fresh Siradj Salman", "Era Fresh Di Panjaitan",
+    "Era Mart Tenggiri", "Era Fresh Sentosa", "Era 5000 Sebrang", "Era Fresh Gatsu",
+    "Era Fresh Pm Noor 2", "Era M2 Mart", "Era Mart Pramuka", "Era Mart Ring Road 1",
+    "Era Mart Jakarta 2", "Era Mart Harum Nafsi", "Era Mart Palaran", "Era Mart Kebaktian",
+    "Era Mart L 3", "Era Mart L 2", "Era Mart Suryanata 1", "Era Amin Mart",
+    "Era Dc Mart Ks Tubun", "Era Fresh Bontang", "Era Fresh Sangatta"
 ];
 
 // NAV MENU TOGGLE (MOBILE)
@@ -115,6 +49,15 @@ const navMenu = document.querySelector('.nav-menu');
 mobileMenu.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     mobileMenu.classList.toggle('is-active');
+});
+
+// MENUTUP MENU OTOMATIS SAAT DIKLIK DI HP
+const navLinks = document.querySelectorAll('.nav-menu li a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileMenu.classList.remove('is-active');
+    });
 });
 
 // LOAD DATA SETELAH DOM SIAP
@@ -134,7 +77,6 @@ function loadMissions() {
     `).join('');
 }
 
-// FUNGSI LOAD PRODUK YANG SUDAH BERSIH DARI PRICE
 function loadProducts() {
     const list = document.getElementById('products-list');
     list.innerHTML = dummyProducts.map(p => `
@@ -145,6 +87,15 @@ function loadProducts() {
             <div class="product-info">
                 <h3>${p.name}</h3>
                 <p>${p.desc}</p>
+                
+                <div class="marketplace-links">
+                    <a href="${p.linkShopee}" target="_blank" class="btn-mp btn-shopee">
+                        <i class="fa-solid fa-bag-shopping"></i> Shopee
+                    </a>
+                    <a href="${p.linkTokopedia}" target="_blank" class="btn-mp btn-tokopedia">
+                        <i class="fa-solid fa-store"></i> Tokopedia
+                    </a>
+                </div>
             </div>
         </div>
     `).join('');
@@ -157,7 +108,7 @@ function loadOutlets() {
     `).join('');
 }
 
-// FITUR PENCARIAN OUTLET (REAL-TIME FILTER)
+// FITUR PENCARIAN OUTLET
 const searchInput = document.getElementById('outletSearch');
 searchInput.addEventListener('input', (e) => {
     const text = e.target.value.toLowerCase();
